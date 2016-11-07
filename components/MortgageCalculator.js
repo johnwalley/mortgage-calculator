@@ -23,35 +23,47 @@ const MortgageCalculator = ({ principal, rate, term, onPrincipalChange, onRateCh
   const { monthly, repayments } = calculateRepayments(+principal, +rate, +term);
 
   return (
-    <div>
-      <p>Total: {(monthly * 12 * term).toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
-      <p>Monthly: {monthly.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
-      <label>Principal: <input
-        type="number"
-        min="0"
-        step="1000"
-        value={principal}
-        onChange={(e) => onPrincipalChange(e.target.value)}
-        />
-      </label>
-      <label>Rate:
+    <div className="container" role="main">
+      <div className="c1">
+        <p>Total: {(monthly * 12 * term).toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
+        <p>Monthly: {monthly.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
+        <ul>
+          <li>
+            <label>Principal: <input
+              type="number"
+              min="0"
+              step="1000"
+              value={principal}
+              onChange={(e) => onPrincipalChange(e.target.value)}
+              />
+            </label>
+          </li>
+          <li>
+            <label>Rate:
       <input
-          type="number"
-          min="0"
-          step="0.01"
-          value={rate}
-          onChange={(e) => onRateChange(e.target.value)}
-          />
-      </label>
-      <label>Term:
+                type="number"
+                min="0"
+                step="0.01"
+                value={rate}
+                onChange={(e) => onRateChange(e.target.value)}
+                />
+            </label>
+          </li>
+          <li>
+            <label>Term:
       <input
-          type="number"
-          min="0"
-          value={term}
-          onChange={(e) => onTermChange(e.target.value)}
-          />
-      </label>
-      <Chart monthly={monthly} repayments={repayments} width={window.innerWidth * 0.90} height="220" />
+                type="number"
+                min="0"
+                value={term}
+                onChange={(e) => onTermChange(e.target.value)}
+                />
+            </label>
+          </li>
+        </ul>
+      </div>
+      <div className="c2">
+        <Chart monthly={monthly} repayments={repayments} width="300" height="220" />
+      </div>
     </div>
   );
 };

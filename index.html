@@ -5,6 +5,28 @@
 
 	<title>Mortgage Calculator</title>
 	<style>
+		.container {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-flex-flow: row wrap;
+			flex-flow: row wrap;
+		}
+		
+		.c1,
+		.c2,
+		.c3 {
+			width: 100%;
+		}
+		
+		@media (min-width: 600px) {
+			.c1 {
+				width: 35%;
+			}
+			.c2 {
+				width: 65%;
+			}
+		}
+		
 		body {
 			font-family: sans-serif;
 		}

@@ -5,6 +5,10 @@ import Axis from './Axis';
 import { bottom, top, left, right } from './Axis';
 
 const Chart = ({ monthly, repayments, width, height }) => {
+  const margin = { top: 40, right: 40, bottom: 40, left: 40 };
+  width = width - margin.left - margin.right;
+  height = height - margin.top - margin.bottom;
+
   const x = d3.scaleLinear()
     .domain(d3.extent(repayments.map(r => r.month)))
     .range([0, width]);
@@ -25,10 +29,16 @@ const Chart = ({ monthly, repayments, width, height }) => {
   const s = [area(stack(repayments)[0]), area(stack(repayments)[1])];
 
   return (
-    <svg width={width} height={height}>
-      <path d={s[1]} fill="#1abc9c" stroke="black" />
-      <path d={s[0]} fill="#3498db" stroke="black" />
-      <Axis orient={top} scale={x} />
+    <svg
+      width={width + margin.left + margin.right}
+      height={height + margin.top + margin.bottom}
+      >
+      <g transform={"translate(" + margin.left + "," + margin.top + ")"}>
+        <path d={s[1]} fill="#1abc9c" stroke="black" />
+        <path d={s[0]} fill="#3498db" stroke="black" />
+        <Axis orient={top} scale={x} />
+        <Axis orient={left} scale={y} />
+      </g>
     </svg>
   );
 };
