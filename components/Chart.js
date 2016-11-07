@@ -2,6 +2,7 @@ import React from 'react';
 import * as d3 from 'd3';
 
 import Axis from './Axis';
+import { bottom, top, left, right } from './Axis';
 
 const Chart = ({ monthly, repayments, width, height }) => {
   const x = d3.scaleLinear()
@@ -27,7 +28,7 @@ const Chart = ({ monthly, repayments, width, height }) => {
     <svg width={width} height={height}>
       <path d={s[1]} fill="#1abc9c" stroke="black" />
       <path d={s[0]} fill="#3498db" stroke="black" />
-      <Axis scale={x}/>
+      <Axis orient={top} scale={x} />
     </svg>
   );
 };

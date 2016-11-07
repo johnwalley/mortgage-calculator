@@ -51,7 +51,7 @@ const MortgageCalculator = ({ principal, rate, term, onPrincipalChange, onRateCh
           onChange={(e) => onTermChange(e.target.value)}
           />
       </label>
-      <Chart monthly={monthly} repayments={repayments} width="640" height="220" />
+      <Chart monthly={monthly} repayments={repayments} width={window.innerWidth * 0.90} height="220" />
     </div>
   );
 };

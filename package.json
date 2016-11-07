@@ -1,5 +1,5 @@
 {
-  "name": "simplest-redux-example",
+  "name": "mortgage-calculator",
   "version": "0.0.0",
   "description": "simplest redux + react example",
   "main": "index.js",
