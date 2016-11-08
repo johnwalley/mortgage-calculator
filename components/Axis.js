@@ -30,7 +30,7 @@ export const left = 4;
 
 const epsilon = 1e-6;
 
-export const Axis = ({ orient, scale, height }) => {
+export const Axis = ({ orient, scale, label, height }) => {
   const tickArguments = [],
     tickValues = null,
     tickFormat = null,
@@ -80,6 +80,14 @@ export const Axis = ({ orient, scale, height }) => {
         ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter
         : "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter}></path>
       {ticks}
+      <text
+      fill="#000"
+      transform={orient === top || orient === bottom ? "rotate(0)" : "rotate(-90)"}
+      x={orient === top || orient === bottom ? (range0 + range1) / 2 : -(range0 + range1) / 2}
+      y={orient === top || orient === bottom ? tickSizeOuter * 5 : -tickSizeOuter * 6}
+      textAnchor="middle">
+        {label}
+      </text>
     </g>
   );
 };
