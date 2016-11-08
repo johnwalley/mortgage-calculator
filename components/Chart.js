@@ -1,8 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 
-import Axis from './Axis';
-import { bottom, top, left, right } from './Axis';
+import { Axis, bottom, top, left, right } from './Axis';
 
 const Chart = ({ monthly, repayments, width, height }) => {
   const margin = { top: 40, right: 40, bottom: 40, left: 40 };
@@ -30,13 +29,15 @@ const Chart = ({ monthly, repayments, width, height }) => {
 
   return (
     <svg
-      width={width + margin.left + margin.right}
-      height={height + margin.top + margin.bottom}
+      width="100%"
+      height="300px"
+      viewBox={"0 0 " + (width + margin.left + margin.right) + " " + (height + margin.top + margin.bottom)}
+      preserveAspectRatio="xMinYMin"
       >
       <g transform={"translate(" + margin.left + "," + margin.top + ")"}>
         <path d={s[1]} fill="#1abc9c" stroke="black" />
         <path d={s[0]} fill="#3498db" stroke="black" />
-        <Axis orient={top} scale={x} />
+        <Axis orient={bottom} scale={x} height={height} />
         <Axis orient={left} scale={y} />
       </g>
     </svg>

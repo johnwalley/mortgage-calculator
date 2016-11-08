@@ -1,11 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
 
 	<title>Mortgage Calculator</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 	<style>
-		.container {
+		.container2 {
 			display: -webkit-flex;
 			display: flex;
 			-webkit-flex-flow: row wrap;
@@ -13,13 +16,13 @@
 		}
 		
 		.c1,
-		.c2,
-		.c3 {
+		.c2 {
 			width: 100%;
 		}
 		
-		@media (min-width: 600px) {
+		@media (min-width: 900px) {
 			.c1 {
+				max-width: 300px;
 				width: 35%;
 			}
 			.c2 {
@@ -27,18 +30,14 @@
 			}
 		}
 		
-		body {
-			font-family: sans-serif;
-		}
-		
-		input {
-			font-size: 14px;
-			width: 90px;
+		.form-control {
+			width: 100px;
 		}
 	</style>
 </head>
 
 <body>
+	<h1>React/D3 Mortgage Calculator</h1>
 	<div id="root" />
 	<script type="text/javascript" src="bundle.js"></script>
 </body>

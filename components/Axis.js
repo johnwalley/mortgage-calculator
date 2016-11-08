@@ -1,5 +1,4 @@
 import React from 'react';
-import { axisBottom } from '../axis';
 import * as d3 from 'd3';
 
 function translateX(scale0, scale1, d) {
@@ -31,7 +30,7 @@ export const left = 4;
 
 const epsilon = 1e-6;
 
-const Axis = ({ orient, scale }) => {
+export const Axis = ({ orient, scale, height }) => {
   const tickArguments = [],
     tickValues = null,
     tickFormat = null,
@@ -70,7 +69,13 @@ const Axis = ({ orient, scale }) => {
   );
 
   return (
-    <g fill="none" fontSize="10" fontFamily="sans-serif" textAnchor={orient === right ? "start" : orient === left ? "end" : "middle"}>
+    <g
+      fill="none"
+      fontSize="10"
+      fontFamily="sans-serif"
+      textAnchor={orient === right ? "start" : orient === left ? "end" : "middle"}
+      transform={(orient === top || orient === bottom) && (height !== undefined) ? "translate(0," + height + ")" : "translate(0,0)"}
+      >
       <path className="domain" stroke="#000" d={orient === left || orient == right
         ? "M" + k * tickSizeOuter + "," + range0 + "H0.5V" + range1 + "H" + k * tickSizeOuter
         : "M" + range0 + "," + k * tickSizeOuter + "V0.5H" + range1 + "V" + k * tickSizeOuter}></path>

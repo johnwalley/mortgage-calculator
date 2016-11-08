@@ -27,42 +27,43 @@ const MortgageCalculator = ({ principal, rate, term, onPrincipalChange, onRateCh
       <div className="c1">
         <p>Total: {(monthly * 12 * term).toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
         <p>Monthly: {monthly.toLocaleString('en-GB', { style: 'currency', currency: 'GBP' })}</p>
-        <ul>
-          <li>
-            <label>Principal: <input
+        <form>
+          <div className="form-group">
+            <label>Principal</label>
+            <input
               type="number"
               min="0"
               step="1000"
               value={principal}
+              className="form-control"
               onChange={(e) => onPrincipalChange(e.target.value)}
               />
-            </label>
-          </li>
-          <li>
-            <label>Rate:
-      <input
-                type="number"
-                min="0"
-                step="0.01"
-                value={rate}
-                onChange={(e) => onRateChange(e.target.value)}
-                />
-            </label>
-          </li>
-          <li>
-            <label>Term:
-      <input
-                type="number"
-                min="0"
-                value={term}
-                onChange={(e) => onTermChange(e.target.value)}
-                />
-            </label>
-          </li>
-        </ul>
+          </div>
+          <div className="form-group">
+            <label>Rate</label>
+            <input
+              type="number"
+              min="0.01"
+              step="0.01"
+              value={rate}
+              className="form-control"
+              onChange={(e) => onRateChange(e.target.value)}
+              />
+          </div>
+          <div className="form-group">
+            <label>Term</label>
+            <input
+              type="number"
+              min="1"
+              value={term}
+              className="form-control"
+              onChange={(e) => onTermChange(e.target.value)}
+              />
+          </div>
+        </form>
       </div>
       <div className="c2">
-        <Chart monthly={monthly} repayments={repayments} width="300" height="220" />
+        <Chart monthly={monthly} repayments={repayments} width="400" height="220" />
       </div>
     </div>
   );
